@@ -3,6 +3,10 @@
  * @author Mentalist
  *
  */
+/**
+ * @author Mentalist
+ *
+ */
 public class Hotel {
       
 	   private String hotelName;
@@ -24,6 +28,11 @@ public class Hotel {
 	}
 	public void setRegularCustomerRate(int regularCustomerRate) {
 		this.regularCustomerRate = regularCustomerRate;
+	}
+
+	@Override
+	public String toString() {
+		return "Hotel [HotelName=" + hotelName + ", RegularCustomerRate=" + regularCustomerRate + "]";
 	}
 	   
 }
