@@ -12,6 +12,8 @@ public class Hotel {
 	   public String hotelName;
 	   public int weekdayRate;
 	   public int weekendRate;
+	   public int totalCost;
+	   
 
 	public Hotel(String hotelName, int weekdayRate, int weekendRate) {
 		super();
@@ -42,6 +44,13 @@ public class Hotel {
 
 	public void setWeekendRate(int weekendRate) {
 		this.weekendRate = weekendRate;
+	}
+	public int getTotalCost() {
+		return totalCost;
+	}
+
+	public void setTotalCost(int totalCost) {
+		this.totalCost = totalCost;
 	}
 
 	@Override
