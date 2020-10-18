@@ -25,7 +25,9 @@ public class HotelReservationSystem {
         int weekdayRate=sc.nextInt();
         System.out.println("Enter Weekend Rate:");
         int weekendRate=sc.nextInt();
-		Hotel hotel=new Hotel(hotelName,weekdayRate, weekendRate);
+        System.out.println("Enter Hotel Rating:");
+        int hotelRating = sc.nextInt();
+		Hotel hotel=new Hotel(hotelName,weekdayRate, weekendRate,hotelRating);
 		hotelList.add(hotel);}
 		else
 			break;

@@ -13,13 +13,15 @@ public class Hotel {
 	   public int weekdayRate;
 	   public int weekendRate;
 	   public int totalCost;
+	   public int hotelRating;
 	   
 
-	public Hotel(String hotelName, int weekdayRate, int weekendRate) {
+	public Hotel(String hotelName, int weekdayRate, int weekendRate,int hotelRating) {
 		super();
 		this.hotelName = hotelName;	
 		this.weekdayRate = weekdayRate;
 		this.weekendRate = weekendRate;
+		this.hotelRating=hotelRating;
 	}
 
 	public String getHotelName() {
