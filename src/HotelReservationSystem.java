@@ -44,7 +44,7 @@ public class HotelReservationSystem {
 		/**
 		 * 
 		 */
-		public static void returnCheapestHotel()
+		public static void returnBestRatedAndCheapestHotel(int index)
 		{
 			Date startDate=null;
 			Date endDate=null;
@@ -76,16 +76,31 @@ public class HotelReservationSystem {
 			}
 			long noOfWeekends=noOfDays-noOfWeekdays;
 			 long minimumCost=0;
-			 for(Hotel hotel: hotelList) 
+			 if(index==1)
 			 {
+			   for(Hotel hotel: hotelList) 
+			      {
 		        	long totalCost = noOfWeekdays*hotel.getWeekdayRate()+noOfWeekends*hotel.getWeekendRate();
 		        	hotel.setTotalCost((int) totalCost);
 		        	if(minimumCost==0)
 		        		minimumCost=hotel.getTotalCost();
 		        	 if(hotel.getTotalCost()<minimumCost)
 						 minimumCost=hotel.getTotalCost();
-		     }
-			 List<String> cheapestListOfHotelName=new ArrayList<>();
+		           }
+			 }
+			   else
+				   if(index==2)
+				   { for(Hotel hotel: hotelList) 
+				      {
+			        	long totalCost = noOfWeekdays*hotel.getWeekdayRewardRate()+noOfWeekends*hotel.getWeekendRewardRate();
+			        	hotel.setTotalCost((int) totalCost);
+			        	if(minimumCost==0)
+			        		minimumCost=hotel.getTotalCost();
+			        	 if(hotel.getTotalCost()<minimumCost)
+							 minimumCost=hotel.getTotalCost();
+				      }
+				   }				   
+			List<String> cheapestListOfHotelName=new ArrayList<>();
 			 int maximumRating=0;
 			 String cheapestAndBestRatedHotel="";
 			 for(int i = 0; i < hotelList.size(); i++) 
@@ -97,10 +112,10 @@ public class HotelReservationSystem {
 					maximumRating=hotelList.get(i).hotelRating;
 					cheapestAndBestRatedHotel=hotelList.get(i).getHotelName();
 				}
-				}
 			 }
-			 System.out.println("Cheapest Hotel is: "+cheapestAndBestRatedHotel+" with total cost $"+minimumCost+" with Rating :"+maximumRating);
 		}
+			 System.out.println("Cheapest Hotel is: "+cheapestAndBestRatedHotel+" with total cost $"+minimumCost+" with Rating :"+maximumRating);
+	}
 		/**
 		 * uc7
 		 */
@@ -161,13 +176,13 @@ public class HotelReservationSystem {
         addHotel();
         Customer customerCategory=new Customer();
         System.out.println("Enter the Customer Type :1 for Regular Customer:2 for Reward Customer");
-        int choice=sc.nextInt();
-        if(choice==1)
+        int index=sc.nextInt();
+        if(index==1)
         	customerCategory.setCustomerType("Regular");
         else
         	customerCategory.setCustomerType("Reward");
         System.out.println("Enter the dates between which we need to find best rated cheapest hotel: ");
-        returnCheapestHotel();
+        returnBestRatedAndCheapestHotel(index);
         System.out.println("Enter the dates to find the best Rated Hotel: ");
         returnBestRatedHotel();
         System.out.println(hotelList);
