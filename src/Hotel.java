@@ -54,10 +54,18 @@ public class Hotel {
 	public void setTotalCost(int totalCost) {
 		this.totalCost = totalCost;
 	}
+	
+	public int getHotelRating() {
+		return hotelRating;
+	}
+
+	public void setHotelRating(int hotelRating) {
+		this.hotelRating = hotelRating;
+	}
 
 	@Override
 	public String toString() {
 		return "Hotel [HotelName=" + hotelName + ", WeekdayRate="
-				+ weekdayRate + ", WeekendRate=" + weekendRate + "]";
+				+ weekdayRate + ", WeekendRate=" + weekendRate + ",HotelRating=" + hotelRating + "]";
 	}
 }

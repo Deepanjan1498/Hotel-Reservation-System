@@ -10,6 +10,10 @@ import java.time.temporal.ChronoUnit;
  * @author Mentalist
  *
  */
+/**
+ * @author Mentalist
+ *
+ */
 public class HotelReservationSystem {
 	   static Scanner sc=new Scanner(System.in);
 	public static List<Hotel> hotelList=new ArrayList<>();
@@ -33,6 +37,9 @@ public class HotelReservationSystem {
 			break;
 		}
 	}
+		/**
+		 * 
+		 */
 		public static void returnCheapestHotel()
 		{
 			Date startDate=null;
@@ -75,12 +82,20 @@ public class HotelReservationSystem {
 						 minimumCost=hotel.getTotalCost();
 		     }
 			 List<String> cheapestListOfHotelName=new ArrayList<>();
+			 int maximumRating=0;
+			 String cheapestAndBestRatedHotel="";
 			 for(int i = 0; i < hotelList.size(); i++) 
 			 {
 				 if(hotelList.get(i).getTotalCost()==minimumCost)
-				cheapestListOfHotelName.add(hotelList.get(i).getHotelName());
+				{cheapestListOfHotelName.add(hotelList.get(i).getHotelName());
+				if(hotelList.get(i).hotelRating>=maximumRating)
+				{
+					maximumRating=hotelList.get(i).hotelRating;
+					cheapestAndBestRatedHotel=hotelList.get(i).getHotelName();
+				}
+				}
 			 }
-			 System.out.println("Cheapest Hotel is: "+cheapestListOfHotelName+" with total cost $"+minimumCost);
+			 System.out.println("Cheapest Hotel is: "+cheapestAndBestRatedHotel+" with total cost $"+minimumCost+" with Rating :"+maximumRating);
 		}
     public static void main( String[] args )
     {
