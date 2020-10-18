@@ -31,7 +31,11 @@ public class HotelReservationSystem {
         int weekendRate=sc.nextInt();
         System.out.println("Enter Hotel Rating:");
         int hotelRating = sc.nextInt();
-		Hotel hotel=new Hotel(hotelName,weekdayRate, weekendRate,hotelRating);
+        System.out.println("Enter Weekday Rate for Reward Customers:");
+        int weekdayRewardRate=sc.nextInt();
+        System.out.println("Enter Weekend Rate for Reward Customers:");
+        int weekendRewardRate=sc.nextInt();
+		Hotel hotel=new Hotel(hotelName,weekdayRate, weekendRate,hotelRating,weekdayRewardRate,weekendRewardRate);
 		hotelList.add(hotel);}
 		else
 			break;
@@ -97,6 +101,9 @@ public class HotelReservationSystem {
 			 }
 			 System.out.println("Cheapest Hotel is: "+cheapestAndBestRatedHotel+" with total cost $"+minimumCost+" with Rating :"+maximumRating);
 		}
+		/**
+		 * uc7
+		 */
 		public static void returnBestRatedHotel() {
 			Date startDate=null;
 			Date endDate=null;
@@ -152,7 +159,14 @@ public class HotelReservationSystem {
     public static void main( String[] args )
     {
         addHotel();
-        System.out.println("Enter the dates between which we need to find cheapest hotel: ");
+        Customer customerCategory=new Customer();
+        System.out.println("Enter the Customer Type :1 for Regular Customer:2 for Reward Customer");
+        int choice=sc.nextInt();
+        if(choice==1)
+        	customerCategory.setCustomerType("Regular");
+        else
+        	customerCategory.setCustomerType("Reward");
+        System.out.println("Enter the dates between which we need to find best rated cheapest hotel: ");
         returnCheapestHotel();
         System.out.println("Enter the dates to find the best Rated Hotel: ");
         returnBestRatedHotel();
