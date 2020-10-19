@@ -1,12 +1,3 @@
-
-/**
- * @author Mentalist
- *
- */
-/**
- * @author Mentalist
- *
- */
 public class Hotel {
       
 	   public String hotelName;

@@ -14,6 +14,10 @@ import java.time.temporal.ChronoUnit;
  * @author Mentalist
  *
  */
+/**
+ * @author Mentalist
+ *
+ */
 public class HotelReservationSystem {
 	   static Scanner sc=new Scanner(System.in);
 	public static List<Hotel> hotelList=new ArrayList<>();
@@ -44,7 +48,7 @@ public class HotelReservationSystem {
 		/**
 		 * 
 		 */
-		public static void returnBestRatedAndCheapestHotel(int index)
+		public static void returnBestRatedAndCheapestHotel(int index) throws EntryInvalidException
 		{
 			Date startDate=null;
 			Date endDate=null;
@@ -100,26 +104,21 @@ public class HotelReservationSystem {
 							 minimumCost=hotel.getTotalCost();
 				      }
 				   }				   
-			List<String> cheapestListOfHotelName=new ArrayList<>();
-			 int maximumRating=0;
-			 String cheapestAndBestRatedHotel="";
+			List<Hotel> cheapestListOfHotelName=new ArrayList<Hotel>();
 			 for(int i = 0; i < hotelList.size(); i++) 
 			 {
 				 if(hotelList.get(i).getTotalCost()==minimumCost)
-				{cheapestListOfHotelName.add(hotelList.get(i).getHotelName());
-				if(hotelList.get(i).hotelRating>=maximumRating)
-				{
-					maximumRating=hotelList.get(i).hotelRating;
-					cheapestAndBestRatedHotel=hotelList.get(i).getHotelName();
-				}
-			 }
+				cheapestListOfHotelName.add(hotelList.get(i));}
+		Hotel cheapestBestRatedHotel = cheapestListOfHotelName.stream().max((hotelOne, hotelTwo) -> hotelOne.getHotelRating() - hotelTwo.getHotelRating()).orElse(null);
+		String cheapestAndHighestRatedHotel=cheapestBestRatedHotel.getHotelName();
+		System.out.println(cheapestAndHighestRatedHotel+", Rating: "+cheapestBestRatedHotel.getHotelRating()+" and Total Cost :$"+minimumCost);
 		}
-			 System.out.println("Cheapest Hotel is: "+cheapestAndBestRatedHotel+" with total cost $"+minimumCost+" with Rating :"+maximumRating);
-	}
+			 			 
+				
 		/**
 		 * uc7
 		 */
-		public static void returnBestRatedHotel() {
+		public static String returnBestRatedHotel() {
 			Date startDate=null;
 			Date endDate=null;
 			System.out.println("Enter Start Date :");
@@ -170,6 +169,8 @@ public class HotelReservationSystem {
 				 }
 			 }
 			 System.out.println("Highest Rated Hotel :"+bestRatedHotelNameList+" with rating :"+maximumRating+"and total cost $"+hotelList.get(count).getTotalCost());
+			return null;
+			
 		}
     public static void main( String[] args )
     {
@@ -182,9 +183,17 @@ public class HotelReservationSystem {
         else
         	customerCategory.setCustomerType("Reward");
         System.out.println("Enter the dates between which we need to find best rated cheapest hotel: ");
-        returnBestRatedAndCheapestHotel(index);
+        try {
+        	 returnBestRatedAndCheapestHotel(index);
+		} catch (EntryInvalidException e) {
+			e.printStackTrace();
+		}
         System.out.println("Enter the dates to find the best Rated Hotel: ");
         returnBestRatedHotel();
         System.out.println(hotelList);
     }
+	public int countNoOfHotels() {
+		// TODO Auto-generated method stub
+		return hotelList.size();
+	}
 }
