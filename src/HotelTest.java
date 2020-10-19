@@ -23,15 +23,26 @@ public void WhenHotelsAdded_ShouldReturnCount()
 {
 	HotelReservationSystem hotelReservation = new HotelReservationSystem();
 	hotelReservation.addHotel();
-	int count=hotelReservation.countNoOfHotels();
+	int count=hotelReservation.countNumberOfHotels();
 	Assert.assertEquals(3, count);
   }
 @Test
-public void WhenHotelsAreAdded_ShouldReturnTheBestRatedHotel()
+public void WhenHotelsAreAdded_ForRewardCustomers_ShouldReturnTheBestRatedHotel()
 {
 	HotelReservationSystem hotelReservation = new HotelReservationSystem();
 	hotelReservation.addHotel();
+	int index=2;
 	String result = hotelReservation.returnBestRatedHotel();
 	assertTrue(true);
   }
+@Test
+public void WhenHotelsAreAdded_ForRegularCustomers_ShouldReturnTheBestRatedHotel()
+{
+	HotelReservationSystem hotelReservation = new HotelReservationSystem();
+	hotelReservation.addHotel();
+	int index=1;
+	String result = hotelReservation.returnBestRatedHotel();
+	assertTrue(true);
+  }
+
 }

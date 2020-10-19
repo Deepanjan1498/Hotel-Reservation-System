@@ -10,14 +10,8 @@ import java.time.temporal.ChronoUnit;
  * @author Mentalist
  *
  */
-/**
- * @author Mentalist
- *
- */
-/**
- * @author Mentalist
- *
- */
+
+
 public class HotelReservationSystem {
 	   static Scanner sc=new Scanner(System.in);
 	public static List<Hotel> hotelList=new ArrayList<>();
@@ -169,8 +163,11 @@ public class HotelReservationSystem {
 				 }
 			 }
 			 System.out.println("Highest Rated Hotel :"+bestRatedHotelNameList+" with rating :"+maximumRating+"and total cost $"+hotelList.get(count).getTotalCost());
-			return null;
-			
+			return null;	
+		}
+		public int countNumberOfHotels() {
+			// TODO Auto-generated method stub
+			return hotelList.size();
 		}
     public static void main( String[] args )
     {
@@ -192,8 +189,5 @@ public class HotelReservationSystem {
         returnBestRatedHotel();
         System.out.println(hotelList);
     }
-	public int countNoOfHotels() {
-		// TODO Auto-generated method stub
-		return hotelList.size();
-	}
+	
 }
